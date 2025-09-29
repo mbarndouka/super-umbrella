@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import "./skills.css";
-import SkillCard from "../components/SkillCard";
+import SkillCard from "../../components/SkillCard";
 import { motion } from "framer-motion";
 
 const Skills = () => {

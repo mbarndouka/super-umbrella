@@ -1,0 +1,62 @@
+@import url("./theme-variables.css");
+
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  padding: 3rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container {
+  max-width: 32rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative elements */
+.auth-layout::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 70%;
+  height: 120%;
+  background: var(--accent-color);
+  transform: rotate(-15deg);
+  z-index: 1;
+  opacity: var(--shape-opacity);
+}
+
+.auth-layout::after {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 40%;
+  height: 60%;
+  border: 5px solid var(--border-color);
+  z-index: 1;
+  opacity: var(--decoration-opacity);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .auth-layout {
+    background-color: #111;
+  }
+
+  .auth-layout::before {
+    background: #fff;
+    opacity: 0.1;
+  }
+
+  .auth-layout::after {
+    border-color: #fff;
+    opacity: 0.2;
+  }
+}

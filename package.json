@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,7 +11,10 @@
   "dependencies": {
     "@iconscout/react-unicons": "^2.2.4",
     "@prisma/client": "^6.7.0",
-    "bcrypt": "^5.1.1",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.2",
     "framer-motion": "^12.9.4",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.506.0",
@@ -24,7 +27,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20.17.32",
     "@types/react": "^19.1.2",

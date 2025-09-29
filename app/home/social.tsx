@@ -28,10 +28,10 @@ const Social = () => {
         animate="visible"
         variants={socialVariants}
         whileHover={{ y: -5, color: "#0A66C2" }}
+        whileTap={{ scale: 0.9 }}
       >
-        <Linkedin />
-      </motion.a>
-
+        <Linkedin size={20} />
+      </motion.a>{" "}
       <motion.a
         href="https://github.com/mbarndouka"
         className="home__social-icon"
@@ -43,10 +43,10 @@ const Social = () => {
         animate="visible"
         variants={socialVariants}
         whileHover={{ y: -5, color: "#333" }}
+        whileTap={{ scale: 0.9 }}
       >
-        <Github />
+        <Github size={20} />
       </motion.a>
-
       <motion.a
         href="https://twitter.com/mbarndouka"
         className="home__social-icon"
@@ -58,8 +58,9 @@ const Social = () => {
         animate="visible"
         variants={socialVariants}
         whileHover={{ y: -5, color: "#1DA1F2" }}
+        whileTap={{ scale: 0.9 }}
       >
-        <Twitter />
+        <Twitter size={20} />
       </motion.a>
     </div>
   );

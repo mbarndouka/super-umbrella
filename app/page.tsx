@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Footer from "./footer/page";
-import Header from "./header/header";
+import Footer from "../components/footer/page";
+import Header from "../components/header/header";
 import About from "./about/page";
 import HomeSection from "./home/Page"; // Import the Home component
 import Skills from "./skills/page";
@@ -14,13 +14,13 @@ export default function Home() {
     <main>
       <Header />
       {/* Main content components */}
-      <HomeSection /> 
+      <HomeSection />
       <About />
       <Skills />
       <Qualification />
       <Portfolio />
       <Contact />
-      
+
       <Footer />
     </main>
   );

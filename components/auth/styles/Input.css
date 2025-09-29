@@ -1,0 +1,112 @@
+/* Import theme variables */
+@import "../../../app/(auth)/theme-variables.css";
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.custom-input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  border: none;
+  border-bottom: 2px solid var(--input-border);
+  appearance: none;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: "Satoshi-Regular", sans-serif;
+}
+
+.custom-input:focus {
+  border-color: var(--border-color);
+  box-shadow: 0 2px 0 0 var(--border-color);
+}
+
+.custom-input::placeholder {
+  color: var(--muted-text);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.custom-input:focus::placeholder {
+  opacity: 0.5;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.rounded-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rounded-bottom {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-error {
+  border-bottom-color: var(--error-color);
+}
+
+.input-error:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 2px 0 0 var(--error-color);
+}
+
+.input-error-message {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Input floating label animation */
+.input-container {
+  position: relative;
+}
+
+.custom-input {
+  padding-top: 1.25rem;
+}
+
+.input-label {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  color: var(--muted-text);
+  font-size: 0.75rem;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.custom-input:focus + .input-label,
+.custom-input:not(:placeholder-shown) + .input-label {
+  top: 0.25rem;
+  left: 1rem;
+  font-size: 0.7rem;
+  color: var(--text-color);
+  font-weight: 600;
+}

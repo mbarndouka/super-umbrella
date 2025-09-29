@@ -2,7 +2,7 @@ import React from "react";
 import { Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import PillButton from "../components/PillButton";
+import PillButton from "../../components/PillButton";
 
 const Data = () => {
   return (
@@ -16,14 +16,17 @@ const Data = () => {
         Mbarndouka.O Marius
       </motion.h1>
 
-      <h3 className="home__subtitle">
-        <TypeAnimation
-          sequence={["Frontend developer", 1000, "Data scientist", 1000]}
-          wrapper="span"
-          speed={50}
-          repeat={Infinity}
-        />
-      </h3>
+      <div className="home__subtitle-wrapper">
+        <h3 className="home__subtitle">
+          <TypeAnimation
+            sequence={["Frontend developer", 1000, "Data scientist", 1000]}
+            wrapper="span"
+            speed={50}
+            repeat={Infinity}
+            className="home__typed-text"
+          />
+        </h3>
+      </div>
 
       <motion.p
         className="home__description"
@@ -39,6 +42,7 @@ const Data = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5 }}
+        className="home__button-container"
       >
         <PillButton href="#contact" className="home-pill-button">
           Say Hello

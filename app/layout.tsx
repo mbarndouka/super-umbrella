@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ClientThemeProvider from "../context/ClientThemeProvider";
-import ThemeToggle from "./header/ThemeToggle";
+import ThemeToggle from "../components/header/ThemeToggle";
 
 const satoshi = localFont({
   src: [

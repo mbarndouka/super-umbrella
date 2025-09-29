@@ -1,0 +1,30 @@
+:root {
+  --bg-color: #f9f9f9;
+  --text-color: #000;
+  --border-color: #000;
+  --input-bg: transparent;
+  --input-border: #000;
+  --card-bg: #fff;
+  --accent-color: #000;
+  --error-color: #ff0000;
+  --link-color: #000;
+  --muted-text: #666;
+  --shape-opacity: 1;
+  --decoration-opacity: 0.1;
+}
+
+/* Dark theme variables */
+.dark-theme {
+  --bg-color: #111;
+  --text-color: #fff;
+  --border-color: #fff;
+  --input-bg: transparent;
+  --input-border: #fff;
+  --card-bg: #111;
+  --accent-color: #fff;
+  --error-color: #ff6b6b;
+  --link-color: #fff;
+  --muted-text: #aaa;
+  --shape-opacity: 0.1;
+  --decoration-opacity: 0.2;
+}

@@ -1,0 +1,45 @@
+/* Import theme variables */
+@import "../../../app/(auth)/theme-variables.css";
+
+.error-alert {
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-left: 3px solid var(--error-color);
+  color: var(--error-color);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.error-alert::before {
+  content: "!";
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--error-color);
+  color: var(--card-bg);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .error-alert {
+    border-left-color: #fff;
+    color: #fff;
+  }
+
+  .error-alert::before {
+    background-color: #fff;
+    color: #000;
+  }
+}

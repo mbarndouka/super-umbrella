@@ -1,0 +1,79 @@
+/* Import theme variables */
+@import "../../../app/(auth)/theme-variables.css";
+
+.checkbox-container {
+  margin-bottom: 1rem;
+}
+
+.checkbox-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  cursor: pointer;
+  padding-left: 2rem;
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.checkbox-label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border-color);
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label:after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.35rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox:checked ~ .checkbox-label:after {
+  opacity: 1;
+}
+
+.custom-checkbox:focus ~ .checkbox-label:before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-error ~ .checkbox-label:before {
+  border-color: var(--error-color);
+}
+
+.checkbox-error-message {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+/* Hover effect */
+.checkbox-label:hover:before {
+  border-color: var(--muted-text);
+}
