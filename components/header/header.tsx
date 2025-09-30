@@ -9,7 +9,7 @@ import {
   Briefcase,
   Image as ImageIcon,
   MessageCircle,
-  BookOpen,
+  // BookOpen,
   Menu,
   X,
 } from "lucide-react";
@@ -167,11 +167,11 @@ const Header: React.FC = () => {
             <Logo />
             <span className="logo-text">Mbarndouka</span>
           </Link>{" "}
-          <div className="blog-button-container">
+          {/* <div className="blog-button-container">
             <Link href="/blog" className="blog-button">
               <BookOpen size={20} /> Blog
             </Link>
-          </div>
+          </div> */}
           {/* Hamburger menu toggle - only shown when menu is closed */}
           {!toggle && (
             <div

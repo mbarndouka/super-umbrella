@@ -383,7 +383,8 @@ export default function BlogPost({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     // In a real app, you would fetch this from an API
-    const foundPost = blogPosts.find((p) => p.id === parseInt(params.id)) ?? null;
+    const foundPost =
+      blogPosts.find((p) => p.id === parseInt(params.id)) ?? null;
     setPost(foundPost);
     setLoading(false);
   }, [params.id]);
@@ -401,7 +402,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
     return (
       <div className="blog-post-error">
         <h2>Article Not Found</h2>
-        <p>Sorry, we couldn't find the article you're looking for.</p>
+        <p>Sorry, we couldn&apos;t find the article you&apos;re looking for.</p>
         <Link href="/blog" className="back-to-blog">
           <ArrowLeft size={20} /> Back to Blog
         </Link>

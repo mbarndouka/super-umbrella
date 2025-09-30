@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { User, DashboardStats } from "@/types/user";
+import { DashboardStats } from "@/types/user";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -11,7 +11,6 @@ export default function Dashboard() {
     experienceCount: 0,
   });
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // Load user data from local storage
@@ -20,7 +19,7 @@ export default function Dashboard() {
       localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
 
     if (userData) {
-      setUser(JSON.parse(userData));
+      // User data loaded from localStorage
     }
 
     if (!token) {
@@ -49,7 +48,6 @@ export default function Dashboard() {
 
           // Update user data with fresh data from the server
           localStorage.setItem("user", JSON.stringify(data.data.user));
-          setUser(data.data.user);
         } else if (response.status === 401) {
           // Token is invalid or expired, redirect to login
           localStorage.removeItem("authToken");
