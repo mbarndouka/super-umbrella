@@ -1,6 +1,6 @@
-import React from "react";
-import { Github, Linkedin, Twitter } from "lucide-react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Social = () => {
   const socialVariants = {
@@ -27,11 +27,11 @@ const Social = () => {
         initial="hidden"
         animate="visible"
         variants={socialVariants}
-        whileHover={{ y: -5, color: "#0A66C2" }}
+        whileHover={{ y: -5, color: '#0A66C2' }}
         whileTap={{ scale: 0.9 }}
       >
         <Linkedin size={20} />
-      </motion.a>{" "}
+      </motion.a>{' '}
       <motion.a
         href="https://github.com/mbarndouka"
         className="home__social-icon"
@@ -42,7 +42,7 @@ const Social = () => {
         initial="hidden"
         animate="visible"
         variants={socialVariants}
-        whileHover={{ y: -5, color: "#333" }}
+        whileHover={{ y: -5, color: '#333' }}
         whileTap={{ scale: 0.9 }}
       >
         <Github size={20} />
@@ -57,7 +57,7 @@ const Social = () => {
         initial="hidden"
         animate="visible"
         variants={socialVariants}
-        whileHover={{ y: -5, color: "#1DA1F2" }}
+        whileHover={{ y: -5, color: '#1DA1F2' }}
         whileTap={{ scale: 0.9 }}
       >
         <Twitter size={20} />

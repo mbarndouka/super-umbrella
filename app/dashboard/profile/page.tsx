@@ -1,24 +1,16 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { User } from "@/types/user";
+'use client';
+import React from 'react';
+import { useAuth } from '@/lib/hooks/useAuth';
 
 export default function ProfilePage() {
-  const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { user, loading, isAuthenticated, redirectToSignIn } = useAuth();
 
-  useEffect(() => {
-    // Load user data from local storage
-    const userData = localStorage.getItem("user");
-    if (userData) {
-      setUser(JSON.parse(userData));
-      setLoading(false);
-    } else {
-      // Redirect to login if no user data found
-      router.push("/signin");
+  // Redirect to sign in if not authenticated
+  React.useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      redirectToSignIn();
     }
-  }, [router]);
+  }, [loading, isAuthenticated, redirectToSignIn]);
 
   if (loading) {
     return <div className="dashboard-loading-content">Loading profile...</div>;
@@ -73,7 +65,7 @@ export default function ProfilePage() {
                   id="name"
                   name="name"
                   className="form-input"
-                  defaultValue={user?.name || ""}
+                  defaultValue={user?.name || ''}
                 />
               </div>
             </div>

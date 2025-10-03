@@ -1,5 +1,5 @@
 /* Import theme variables */
-@import "../../../app/(auth)/theme-variables.css";
+@import '../../../app/(auth)/theme-variables.css';
 
 .input-container {
   position: relative;
@@ -20,7 +20,7 @@
   appearance: none;
   outline: none;
   transition: all 0.3s ease;
-  font-family: "Satoshi-Regular", sans-serif;
+  font-family: 'Satoshi-Regular', sans-serif;
 }
 
 .custom-input:focus {

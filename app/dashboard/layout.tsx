@@ -1,7 +1,7 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import "./dashboard.css";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import './dashboard.css';
 
 export default function DashboardLayout({
   children,
@@ -19,11 +19,11 @@ export default function DashboardLayout({
   useEffect(() => {
     // Check for authentication on client side
     const token =
-      localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
-    const userInfo = localStorage.getItem("user");
+      localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+    const userInfo = localStorage.getItem('user');
 
     if (!token) {
-      router.push("/signin");
+      router.push('/signin');
       return;
     }
 
@@ -31,9 +31,9 @@ export default function DashboardLayout({
       try {
         setUser(JSON.parse(userInfo));
       } catch (e) {
-        console.error("Failed to parse user info:", e);
-        localStorage.removeItem("user");
-        router.push("/signin");
+        console.error('Failed to parse user info:', e);
+        localStorage.removeItem('user');
+        router.push('/signin');
       }
     }
 
@@ -42,12 +42,12 @@ export default function DashboardLayout({
 
   const handleLogout = () => {
     // Remove authentication data
-    localStorage.removeItem("authToken");
-    sessionStorage.removeItem("authToken");
-    localStorage.removeItem("user");
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
+    localStorage.removeItem('user');
 
     // Redirect to signin page
-    router.push("/signin");
+    router.push('/signin');
   };
 
   if (loading) {
@@ -92,7 +92,7 @@ export default function DashboardLayout({
       <main className="dashboard-main">
         <header className="dashboard-header">
           <div className="header-content">
-            <h1>Welcome, {user?.name || "User"}</h1>
+            <h1>Welcome, {user?.name || 'User'}</h1>
             <div className="user-info">
               <span className="user-email">{user?.email}</span>
               <span className="user-role">{user?.role}</span>

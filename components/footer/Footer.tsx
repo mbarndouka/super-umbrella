@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import "./footer.css";
-import { Linkedin, Github, Twitter, Heart } from "lucide-react";
+'use client';
+import React from 'react';
+import './footer.css';
+import { Linkedin, Github, Twitter, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -62,7 +62,8 @@ const Footer = () => {
         </div>
 
         <span className="footer__copy">
-          <Heart size={14} className="footer__heart" /> Mbarndouka. All rights reserved - {new Date().getFullYear()} 
+          <Heart size={14} className="footer__heart" /> Mbarndouka. All rights
+          reserved - {new Date().getFullYear()}
         </span>
       </div>
     </footer>

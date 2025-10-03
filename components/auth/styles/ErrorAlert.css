@@ -1,5 +1,5 @@
 /* Import theme variables */
-@import "../../../app/(auth)/theme-variables.css";
+@import '../../../app/(auth)/theme-variables.css';
 
 .error-alert {
   padding: 0.75rem 1rem;
@@ -14,7 +14,7 @@
 }
 
 .error-alert::before {
-  content: "!";
+  content: '!';
   position: absolute;
   left: -1.5rem;
   top: 50%;

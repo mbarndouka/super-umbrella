@@ -1,29 +1,29 @@
-import React, { ButtonHTMLAttributes } from "react";
-import "./styles/Button.css";
+import React, { ButtonHTMLAttributes } from 'react';
+import './styles/Button.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline";
+  variant?: 'primary' | 'secondary' | 'outline';
   fullWidth?: boolean;
   isLoading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  variant = "primary",
+  variant = 'primary',
   fullWidth = false,
   isLoading = false,
-  className = "",
+  className = '',
   disabled,
   ...props
 }) => {
   const buttonClasses = [
-    "custom-button",
+    'custom-button',
     `button-${variant}`,
-    fullWidth ? "button-full-width" : "",
+    fullWidth ? 'button-full-width' : '',
     className,
   ]
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
 
   return (
     <button

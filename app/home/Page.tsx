@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Social from "./social";
-import Data from "./Data";
-import ScrollDown from "./ScrollDown";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Profile from "../../assets/images/face12.jpg";
-import "./Home.css";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Social from './social';
+import Data from './Data';
+import ScrollDown from './ScrollDown';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Profile from '../../assets/images/face12.jpg';
+import './Home.css';
 
 const Home = () => {
   const [showScrollDown, setShowScrollDown] = useState(true);
@@ -20,10 +21,10 @@ const Home = () => {
     checkScreenSize();
 
     // Add event listener for window resize
-    window.addEventListener("resize", checkScreenSize);
+    window.addEventListener('resize', checkScreenSize);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
   return (
     <section className="home section" id="home">
@@ -32,7 +33,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
             className="home__social-container"
           >
             <Social />
@@ -43,33 +44,37 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.7,
-              ease: "easeOut",
+              ease: 'easeOut',
               delay: 0.4,
             }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "inset 0 0 0 9px rgba(255, 255, 255, 0.4)",
+              boxShadow: 'inset 0 0 0 9px rgba(255, 255, 255, 0.4)',
               transition: { duration: 0.3 },
             }}
           >
             <Image
               src={Profile}
-              alt="Profile"
+              alt="Mbarndouka - Full-Stack Developer"
               width={300}
               height={300}
               className="profile-image"
               priority
-              sizes="(max-width: 768px) 200px, (max-width: 992px) 250px, 300px"
+              placeholder="blur"
+              quality={90}
+              style={{
+                borderRadius: '1.5rem',
+              }}
             />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.6 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.6 }}
             className="home__data-container"
           >
             <Data />
-          </motion.div>{" "}
+          </motion.div>{' '}
         </div>
 
         {showScrollDown && (
@@ -98,7 +103,7 @@ const Home = () => {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
         <motion.div
@@ -112,7 +117,7 @@ const Home = () => {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 1,
           }}
         />

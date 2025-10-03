@@ -1,24 +1,24 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import "./pillbutton.css";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import './pillbutton.css';
 
 interface PillButtonProps {
   children: React.ReactNode;
   href?: string;
   className?: string;
   onClick?: () => void;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
 }
 
 const PillButton: React.FC<PillButtonProps> = ({
   children,
-  href = "",
-  className = "",
+  href = '',
+  className = '',
   onClick,
-  size = "medium",
+  size = 'medium',
 }) => {
-  if (href.startsWith("#")) {
+  if (href.startsWith('#')) {
     return (
       <a
         href={href}

@@ -1,9 +1,9 @@
-import React, { InputHTMLAttributes } from "react";
-import "./styles/Checkbox.css";
+import React, { InputHTMLAttributes } from 'react';
+import './styles/Checkbox.css';
 
 interface CheckboxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
-  label: string;
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  label: React.ReactNode;
   id: string;
   error?: string;
 }
@@ -12,7 +12,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   label,
   id,
   error,
-  className = "",
+  className = '',
   ...props
 }) => {
   return (
@@ -22,7 +22,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           id={id}
           type="checkbox"
           className={`custom-checkbox ${className} ${
-            error ? "checkbox-error" : ""
+            error ? 'checkbox-error' : ''
           }`}
           aria-invalid={!!error}
           {...props}

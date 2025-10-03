@@ -1,5 +1,5 @@
-import React from "react";
-import "./styles/ErrorAlert.css";
+import React from 'react';
+import './styles/ErrorAlert.css';
 
 interface ErrorAlertProps {
   message: string;

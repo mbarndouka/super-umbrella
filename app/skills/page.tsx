@@ -1,75 +1,56 @@
-"use client";
-import React from "react";
-import "./skills.css";
-import SkillCard from "../../components/SkillCard";
-import { motion } from "framer-motion";
+'use client';
+import React from 'react';
+import './skills.css';
+import SkillCard from '../../components/SkillCard';
+import { motion } from 'framer-motion';
+import { useAnimation } from '../../lib/hooks/useAnimation';
 
 const Skills = () => {
+  const { staggerContainer, staggerItem } = useAnimation();
   // Define frontend developer skills with creative levels
   const frontendSkills = [
-    { name: "HTML", level: "Rock Solid" },
-    { name: "NextJs", level: "Power User" },
-    { name: "CSS", level: "Style Master" },
-    { name: "Git", level: "Branch Wizard" },
-    { name: "Javascript", level: "Logic Ninja" },
-    { name: "React", level: "Component Architect" },
-    { name: "TypeScript", level: "Type Guardian" },
+    { name: 'HTML', level: 'Rock Solid' },
+    { name: 'NextJs', level: 'Power User' },
+    { name: 'CSS', level: 'Style Master' },
+    { name: 'Git', level: 'Branch Wizard' },
+    { name: 'Javascript', level: 'Logic Ninja' },
+    { name: 'React', level: 'Component Architect' },
+    { name: 'TypeScript', level: 'Type Guardian' },
   ];
 
   // Define backend skills with creative levels
   const backendSkills = [
-    { name: "Node.js", level: "Runtime Ranger" },
-    { name: "Express", level: "API Artisan" },
-    { name: "RESTful APIs", level: "Endpoint Engineer" },
-    { name: "GraphQL", level: "Query Craftsman" },
-    { name: "Authentication", level: "Security Sentinel" },
+    { name: 'Node.js', level: 'Runtime Ranger' },
+    { name: 'Express', level: 'API Artisan' },
+    { name: 'RESTful APIs', level: 'Endpoint Engineer' },
+    { name: 'GraphQL', level: 'Query Craftsman' },
+    { name: 'Authentication', level: 'Security Sentinel' },
   ];
 
   // Database skills with creative levels
   const databaseSkills = [
-    { name: "MongoDB", level: "NoSQL Navigator" },
-    { name: "PostgreSQL", level: "Query Commander" },
-    { name: "MySQL", level: "Data Architect" },
-    { name: "Redis", level: "Cache Conjurer" },
+    { name: 'MongoDB', level: 'NoSQL Navigator' },
+    { name: 'PostgreSQL', level: 'Query Commander' },
+    { name: 'MySQL', level: 'Data Architect' },
+    { name: 'Redis', level: 'Cache Conjurer' },
   ];
 
   // Data Science skills with actual data science technologies
   const dataScienceSkills = [
-    { name: "Python", level: "Data Wrangler" },
-    { name: "Pandas", level: "Frame Tamer" },
-    { name: "NumPy", level: "Array Artist" },
-    { name: "Matplotlib", level: "Viz Virtuoso" },
-    { name: "Jupyter", level: "Notebook Navigator" },
+    { name: 'Python', level: 'Data Wrangler' },
+    { name: 'Pandas', level: 'Frame Tamer' },
+    { name: 'NumPy', level: 'Array Artist' },
+    { name: 'Matplotlib', level: 'Viz Virtuoso' },
+    { name: 'Jupyter', level: 'Notebook Navigator' },
   ];
 
   // Tools and environments
   const toolsSkills = [
-    { name: "VS Code", level: "Power User" },
-    { name: "Docker", level: "Container Captain" },
-    { name: "CI/CD", level: "Pipeline Pioneer" },
-    { name: "AWS", level: "Cloud Surfer" },
+    { name: 'VS Code', level: 'Power User' },
+    { name: 'Docker', level: 'Container Captain' },
+    { name: 'CI/CD', level: 'Pipeline Pioneer' },
+    { name: 'AWS', level: 'Cloud Surfer' },
   ];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  };
 
   return (
     <section className="skills section" id="skills">
@@ -93,27 +74,27 @@ const Skills = () => {
 
       <motion.div
         className="skills__container container grid"
-        variants={containerVariants}
+        variants={staggerContainer}
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants}>
+        <motion.div variants={staggerItem}>
           <SkillCard title="Frontend Wizardry" skills={frontendSkills} />
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={staggerItem}>
           <SkillCard title="Backend Sorcery" skills={backendSkills} />
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={staggerItem}>
           <SkillCard title="Database Command" skills={databaseSkills} />
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={staggerItem}>
           <SkillCard title="Data Science Alchemy" skills={dataScienceSkills} />
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={staggerItem}>
           <SkillCard title="Tools & Environments" skills={toolsSkills} />
         </motion.div>
       </motion.div>

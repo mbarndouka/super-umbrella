@@ -1,62 +1,18 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import "./blog.css";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
+import { getBlogPosts } from '@/lib/blog-data';
+import './blog.css';
 
-// Sample blog post data - in a real application, you would fetch this from an API
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js",
-    excerpt:
-      "Learn the basics of Next.js and how to create a modern React application with server-side rendering.",
-    date: "May 2, 2025",
-    author: "Mbarndouka",
-    category: "Web Development",
-    tags: ["Next.js", "React", "JavaScript"],
-    readTime: "5 min read",
-    imageUrl: "/blog-placeholder-1.jpg",
-  },
-  {
-    id: 2,
-    title: "Mastering CSS Grid Layouts",
-    excerpt:
-      "Discover how to create complex and responsive layouts using CSS Grid without any frameworks.",
-    date: "April 15, 2025",
-    author: "Mbarndouka",
-    category: "CSS",
-    tags: ["CSS", "Web Design", "Responsive"],
-    readTime: "7 min read",
-    imageUrl: "/blog-placeholder-2.jpg",
-  },
-  {
-    id: 3,
-    title: "TypeScript Best Practices for React",
-    excerpt:
-      "Improve your React code quality with these TypeScript tips and patterns recommended by experts.",
-    date: "March 28, 2025",
-    author: "Mbarndouka",
-    category: "TypeScript",
-    tags: ["TypeScript", "React", "Best Practices"],
-    readTime: "9 min read",
-    imageUrl: "/blog-placeholder-3.jpg",
-  },
-  {
-    id: 4,
-    title: "Building Accessible Web Applications",
-    excerpt:
-      "Learn why accessibility matters and how to implement it in your web projects from the ground up.",
-    date: "February 14, 2025",
-    author: "Mbarndouka",
-    category: "Accessibility",
-    tags: ["a11y", "Web", "UX"],
-    readTime: "6 min read",
-    imageUrl: "/blog-placeholder-4.jpg",
-  },
-];
+/**
+ * Blog listing page with ISR (Incremental Static Regeneration)
+ * Revalidates every 60 seconds to pick up new content
+ */
+export const revalidate = 60; // ISR: revalidate every 60 seconds
 
-export default function Blog() {
+export default async function Blog() {
+  const blogPosts = await getBlogPosts();
   return (
     <section className="blog section">
       <h2 className="section__title">Blog</h2>
@@ -81,10 +37,12 @@ export default function Blog() {
                   alt={post.title}
                   width={400}
                   height={200}
+                  priority={post.id <= 2} // Priority for first 2 posts
+                  loading={post.id > 2 ? 'lazy' : undefined}
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
                   }}
                 />
               </div>
@@ -100,7 +58,7 @@ export default function Blog() {
 
                 <div className="blog__post-footer">
                   <Link href={`/blog/${post.id}`} className="blog__post-link">
-                    Read More{" "}
+                    Read More{' '}
                     <ArrowRight size={18} className="blog__post-icon" />
                   </Link>
                 </div>

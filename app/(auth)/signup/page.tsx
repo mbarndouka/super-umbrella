@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { AuthCard, SignUpForm } from "@/components/auth";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { AuthCard, SignUpForm } from '@/components/auth';
 
 export default function SignUpPage() {
   return (
@@ -9,7 +9,7 @@ export default function SignUpPage() {
       title="Create your account"
       subtitle={
         <>
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/signin" className="terms-link">
             Sign in instead
           </Link>

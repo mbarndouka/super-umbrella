@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import Logo from "./Logo";
+'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Logo from './Logo';
 import {
   Home,
   User,
@@ -12,14 +12,14 @@ import {
   // BookOpen,
   Menu,
   X,
-} from "lucide-react";
+} from 'lucide-react';
 
-import "./header.css";
+import './header.css';
 
 const Header: React.FC = () => {
   // Toggle menu state - make sure it's false by default
   const [toggle, setShowMenu] = useState<boolean>(false);
-  const [activeNav, setActiveNav] = useState<string>("#home");
+  const [activeNav, setActiveNav] = useState<string>('#home');
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -29,9 +29,9 @@ const Header: React.FC = () => {
       const header = headerRef.current;
       if (header) {
         if (window.scrollY >= 80) {
-          header.classList.add("scroll-header");
+          header.classList.add('scroll-header');
         } else {
-          header.classList.remove("scroll-header");
+          header.classList.remove('scroll-header');
         }
       }
     };
@@ -43,35 +43,35 @@ const Header: React.FC = () => {
 
       const header = headerRef.current;
       if (header) {
-        header.classList.add("scroll-progress");
-        header.style.setProperty("--scroll-percentage", `${progress}%`);
+        header.classList.add('scroll-progress');
+        header.style.setProperty('--scroll-percentage', `${progress}%`);
       }
     };
 
-    window.addEventListener("scroll", changeBackground);
-    window.addEventListener("scroll", calculateScrollProgress);
+    window.addEventListener('scroll', changeBackground);
+    window.addEventListener('scroll', calculateScrollProgress);
 
     // Initial calculation
     calculateScrollProgress();
 
     // Cleanup function to remove event listeners
     return () => {
-      window.removeEventListener("scroll", changeBackground);
-      window.removeEventListener("scroll", calculateScrollProgress);
+      window.removeEventListener('scroll', changeBackground);
+      window.removeEventListener('scroll', calculateScrollProgress);
     };
   }, []);
 
   // Handle body scroll when menu is open/closed
   useEffect(() => {
     if (toggle) {
-      document.body.classList.add("no-scroll");
+      document.body.classList.add('no-scroll');
     } else {
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove('no-scroll');
     }
 
     // Cleanup
     return () => {
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove('no-scroll');
     };
   }, [toggle]);
   // Close menu when clicking outside
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
       if (!toggle) return;
 
       // Make sure we're not clicking on the menu or the toggle button itself
-      const toggleButton = document.querySelector(".nav__toggle");
+      const toggleButton = document.querySelector('.nav__toggle');
       if (
         menuRef.current &&
         !menuRef.current.contains(e.target as Node) &&
@@ -93,12 +93,12 @@ const Header: React.FC = () => {
 
     // Small delay to prevent immediate closure when opening
     const timer = setTimeout(() => {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     }, 100);
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [toggle]);
   // Close mobile menu when clicking a nav link
@@ -126,9 +126,9 @@ const Header: React.FC = () => {
       }
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [toggle]);
 
@@ -140,16 +140,16 @@ const Header: React.FC = () => {
         const headerHeight = headerRef.current?.offsetHeight || 0;
         body.style.paddingTop = `${headerHeight}px`;
       } else {
-        body.style.paddingTop = "0";
+        body.style.paddingTop = '0';
       }
     };
 
     updateBodyPadding();
-    window.addEventListener("resize", updateBodyPadding);
+    window.addEventListener('resize', updateBodyPadding);
 
     return () => {
-      window.removeEventListener("resize", updateBodyPadding);
-      body.style.paddingTop = "0";
+      window.removeEventListener('resize', updateBodyPadding);
+      body.style.paddingTop = '0';
     };
   }, []);
 
@@ -157,7 +157,7 @@ const Header: React.FC = () => {
     <>
       {/* Overlay for mobile menu - only show when menu is open */}
       <div
-        className={toggle ? "menu-overlay show-overlay" : "menu-overlay"}
+        className={toggle ? 'menu-overlay show-overlay' : 'menu-overlay'}
         onClick={() => setShowMenu(false)}
       ></div>
 
@@ -166,7 +166,7 @@ const Header: React.FC = () => {
           <Link href="#home" className="nav__logo">
             <Logo />
             <span className="logo-text">Mbarndouka</span>
-          </Link>{" "}
+          </Link>{' '}
           {/* <div className="blog-button-container">
             <Link href="/blog" className="blog-button">
               <BookOpen size={20} /> Blog
@@ -186,7 +186,7 @@ const Header: React.FC = () => {
             </div>
           )}
           <div
-            className={toggle ? "nav__menu show-menu" : "nav__menu"}
+            className={toggle ? 'nav__menu show-menu' : 'nav__menu'}
             ref={menuRef}
             aria-hidden={!toggle}
           >
@@ -203,11 +203,11 @@ const Header: React.FC = () => {
               <li className="nav__item">
                 <Link
                   href="#home"
-                  onClick={() => handleNavClick("#home")}
+                  onClick={() => handleNavClick('#home')}
                   className={
-                    activeNav === "#home"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#home'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <Home className="nav__icon" size={20} />
@@ -217,11 +217,11 @@ const Header: React.FC = () => {
               <li className="nav__item">
                 <Link
                   href="#about"
-                  onClick={() => handleNavClick("#about")}
+                  onClick={() => handleNavClick('#about')}
                   className={
-                    activeNav === "#about"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#about'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <User className="nav__icon" size={20} /> About
@@ -230,11 +230,11 @@ const Header: React.FC = () => {
               <li className="nav__item">
                 <Link
                   href="#skills"
-                  onClick={() => handleNavClick("#skills")}
+                  onClick={() => handleNavClick('#skills')}
                   className={
-                    activeNav === "#skills"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#skills'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <FileText className="nav__icon" size={20} /> Skills
@@ -243,25 +243,25 @@ const Header: React.FC = () => {
               <li className="nav__item">
                 <Link
                   href="#qualification"
-                  onClick={() => handleNavClick("#qualification")}
+                  onClick={() => handleNavClick('#qualification')}
                   className={
-                    activeNav === "#qualification"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#qualification'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <Briefcase className="nav__icon" size={20} /> Journey
                 </Link>
-              </li>{" "}
+              </li>{' '}
               <li className="nav__item">
-                {" "}
+                {' '}
                 <Link
                   href="#portfolio"
-                  onClick={() => handleNavClick("#portfolio")}
+                  onClick={() => handleNavClick('#portfolio')}
                   className={
-                    activeNav === "#portfolio"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#portfolio'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <ImageIcon className="nav__icon" size={20} /> Portfolio
@@ -270,11 +270,11 @@ const Header: React.FC = () => {
               <li className="nav__item">
                 <Link
                   href="#contact"
-                  onClick={() => handleNavClick("#contact")}
+                  onClick={() => handleNavClick('#contact')}
                   className={
-                    activeNav === "#contact"
-                      ? "nav__link active__link"
-                      : "nav__link"
+                    activeNav === '#contact'
+                      ? 'nav__link active__link'
+                      : 'nav__link'
                   }
                 >
                   <MessageCircle className="nav__icon" size={20} /> Contact

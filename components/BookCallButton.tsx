@@ -1,19 +1,19 @@
-"use client";
-import React from "react";
-import PillButton from "./PillButton";
+'use client';
+import React from 'react';
+import PillButton from './PillButton';
 
 interface BookCallButtonProps {
   href?: string;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
   onClick?: () => void;
   className?: string;
 }
 
 const BookCallButton = ({
-  href = "#contact",
-  size = "medium",
+  href = '#contact',
+  size = 'medium',
   onClick,
-  className = "",
+  className = '',
 }: BookCallButtonProps) => {
   return (
     <PillButton href={href} size={size} onClick={onClick} className={className}>

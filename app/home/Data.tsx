@@ -1,8 +1,8 @@
-import React from "react";
-import { Send } from "lucide-react";
-import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import PillButton from "../../components/PillButton";
+import React from 'react';
+import { Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import PillButton from '../../components/PillButton';
 
 const Data = () => {
   return (
@@ -19,7 +19,7 @@ const Data = () => {
       <div className="home__subtitle-wrapper">
         <h3 className="home__subtitle">
           <TypeAnimation
-            sequence={["Frontend developer", 1000, "Data scientist", 1000]}
+            sequence={['Frontend developer', 1000, 'Data scientist', 1000]}
             wrapper="span"
             speed={50}
             repeat={Infinity}

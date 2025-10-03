@@ -1,5 +1,5 @@
 /* Import theme variables */
-@import "../../../app/(auth)/theme-variables.css";
+@import '../../../app/(auth)/theme-variables.css';
 
 .custom-button {
   display: inline-flex;
@@ -97,7 +97,7 @@
 }
 
 .custom-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;

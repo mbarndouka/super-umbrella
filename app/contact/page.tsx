@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import "./contact.css";
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import './contact.css';
 
 const Contact = () => {
   return (
@@ -52,7 +52,7 @@ const Contact = () => {
                 href="mailto:mmbarndouka@gmail.com"
                 className="contact__button"
               >
-                Write me{" "}
+                Write me{' '}
                 <i className="bx bx-right-arrow-alt contact__button-icon"></i>
               </a>
             </motion.div>
@@ -75,7 +75,7 @@ const Contact = () => {
                 Available for quick chats and project discussions via WhatsApp.
               </p>
               <a href="https://wa.link/h9dxqz" className="contact__button">
-                Message me{" "}
+                Message me{' '}
                 <i className="bx bx-right-arrow-alt contact__button-icon"></i>
               </a>
             </motion.div>
@@ -104,7 +104,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/mbarndouka"
                 className="contact__button"
               >
-                Connect{" "}
+                Connect{' '}
                 <i className="bx bx-right-arrow-alt contact__button-icon"></i>
               </a>
             </motion.div>
@@ -125,9 +125,9 @@ const Contact = () => {
               className="contact__availability-indicator"
               animate={{
                 boxShadow: [
-                  "0 0 5px 5px rgba(46, 255, 96, 0.2)",
-                  "0 0 10px 10px rgba(46, 255, 96, 0.4)",
-                  "0 0 5px 5px rgba(46, 255, 96, 0.2)",
+                  '0 0 5px 5px rgba(46, 255, 96, 0.2)',
+                  '0 0 10px 10px rgba(46, 255, 96, 0.4)',
+                  '0 0 5px 5px rgba(46, 255, 96, 0.2)',
                 ],
               }}
               transition={{

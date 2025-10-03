@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import Input from "./Input";
-import Button from "./Button";
-import Checkbox from "./Checkbox";
-import ErrorAlert from "./ErrorAlert";
-import "./styles/AuthForms.css";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Input from './Input';
+import Button from './Button';
+import Checkbox from './Checkbox';
+import ErrorAlert from './ErrorAlert';
+import './styles/AuthForms.css';
 
 interface SignInFormProps {
   onSuccess?: () => void;
@@ -13,36 +13,36 @@ interface SignInFormProps {
 const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     rememberMe: false,
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError('');
 
     try {
-      const response = await fetch("/api/auth", {
-        method: "POST",
+      const response = await fetch('/api/auth', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,
-          action: "signin",
+          action: 'signin',
         }),
       });
 
@@ -51,13 +51,13 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
       if (response.ok) {
         // Store token based on remember me preference
         if (formData.rememberMe) {
-          localStorage.setItem("authToken", data.data.token);
+          localStorage.setItem('authToken', data.data.token);
         } else {
-          sessionStorage.setItem("authToken", data.data.token);
+          sessionStorage.setItem('authToken', data.data.token);
         }
 
         // Store user info in localStorage
-        localStorage.setItem("user", JSON.stringify(data.data.user));
+        localStorage.setItem('user', JSON.stringify(data.data.user));
 
         // Call onSuccess callback if provided
         if (onSuccess) {
@@ -65,13 +65,13 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
         }
 
         // Redirect to dashboard
-        router.push("/dashboard");
+        router.push('/dashboard');
       } else {
-        setError(data.message || "Authentication failed");
+        setError(data.message || 'Authentication failed');
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
-      console.error("Auth error:", err);
+      setError('An error occurred. Please try again.');
+      console.error('Auth error:', err);
     } finally {
       setLoading(false);
     }

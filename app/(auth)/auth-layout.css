@@ -1,4 +1,4 @@
-@import url("./theme-variables.css");
+@import url('./theme-variables.css');
 
 .auth-layout {
   min-height: 100vh;
@@ -20,7 +20,7 @@
 
 /* Decorative elements */
 .auth-layout::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -30%;
   left: -10%;
@@ -33,7 +33,7 @@
 }
 
 .auth-layout::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -20%;
   right: -10%;

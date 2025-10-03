@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { AuthCard, SignInForm } from "@/components/auth";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { AuthCard, SignInForm } from '@/components/auth';
 
 export default function SignInPage() {
   return (
@@ -9,7 +9,7 @@ export default function SignInPage() {
       title="Sign in to your account"
       subtitle={
         <>
-          Or{" "}
+          Or{' '}
           <Link href="/signup" className="terms-link">
             create a new account
           </Link>

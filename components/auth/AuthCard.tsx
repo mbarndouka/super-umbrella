@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 // import Link from 'next/link';
-import "./styles/AuthCard.css";
+import './styles/AuthCard.css';
 
 interface AuthCardProps {
   title: string;

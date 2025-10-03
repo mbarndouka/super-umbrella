@@ -1,11 +1,20 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 // import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, X, Github, ExternalLink } from "lucide-react";
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
-import "./portfolio.css";
+import './portfolio.css';
+
+// Lazy load the modal component
+const PortfolioModal = dynamic(
+  () => import('../../components/PortfolioModal'),
+  {
+    loading: () => <div>Loading...</div>,
+  }
+);
 
 // Define animation props interface
 // interface AnimationProps {
@@ -35,90 +44,90 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
+    title: 'E-commerce Platform',
     description:
-      "Full-stack e-commerce application with React, Node.js, and MongoDB",
+      'Full-stack e-commerce application with React, Node.js, and MongoDB',
     detailedDescription:
-      "A comprehensive e-commerce solution that includes product management, shopping cart, user authentication, payment processing, and order tracking. Built with a React frontend, Node.js backend, and MongoDB database.",
-    image: "/project1.jpg",
-    category: "web",
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project1",
+      'A comprehensive e-commerce solution that includes product management, shopping cart, user authentication, payment processing, and order tracking. Built with a React frontend, Node.js backend, and MongoDB database.',
+    image: '/project1.jpg',
+    category: 'web',
+    tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project1',
   },
   {
     id: 2,
-    title: "Portfolio Website",
-    description: "Personal portfolio website built with Next.js and TypeScript",
+    title: 'Portfolio Website',
+    description: 'Personal portfolio website built with Next.js and TypeScript',
     detailedDescription:
-      "A modern, responsive portfolio website to showcase projects and skills. Built with Next.js and TypeScript, featuring dark mode, animations, and contact form with server-side validation.",
-    image: "/project2.jpg",
-    category: "web",
-    tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project2",
+      'A modern, responsive portfolio website to showcase projects and skills. Built with Next.js and TypeScript, featuring dark mode, animations, and contact form with server-side validation.',
+    image: '/project2.jpg',
+    category: 'web',
+    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project2',
   },
   {
     id: 3,
-    title: "Task Management App",
-    description: "Task management application with drag-and-drop functionality",
+    title: 'Task Management App',
+    description: 'Task management application with drag-and-drop functionality',
     detailedDescription:
-      "A productivity app that helps users organize tasks with drag-and-drop functionality. Features include task categories, due dates, priority levels, and progress tracking.",
-    image: "/project3.jpg",
-    category: "app",
-    tags: ["React", "Redux", "Firebase"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project3",
+      'A productivity app that helps users organize tasks with drag-and-drop functionality. Features include task categories, due dates, priority levels, and progress tracking.',
+    image: '/project3.jpg',
+    category: 'app',
+    tags: ['React', 'Redux', 'Firebase'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project3',
   },
   {
     id: 4,
-    title: "Finance Dashboard",
-    description: "Financial analytics dashboard with data visualization",
+    title: 'Finance Dashboard',
+    description: 'Financial analytics dashboard with data visualization',
     detailedDescription:
-      "An interactive dashboard that visualizes financial data with charts, graphs, and tables. Allows users to track expenses, income, and investments with customizable date ranges.",
-    image: "/project4.jpg",
-    category: "data",
-    tags: ["React", "D3.js", "Firebase"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project4",
+      'An interactive dashboard that visualizes financial data with charts, graphs, and tables. Allows users to track expenses, income, and investments with customizable date ranges.',
+    image: '/project4.jpg',
+    category: 'data',
+    tags: ['React', 'D3.js', 'Firebase'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project4',
   },
   {
     id: 5,
-    title: "AI Image Generator",
-    description: "Image generation tool using machine learning APIs",
+    title: 'AI Image Generator',
+    description: 'Image generation tool using machine learning APIs',
     detailedDescription:
-      "A web application that generates images based on text prompts using AI. Integrates with external machine learning APIs and allows users to save and share their generated images.",
-    image: "/project5.jpg",
-    category: "ai",
-    tags: ["React", "OpenAI API", "Node.js"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project5",
+      'A web application that generates images based on text prompts using AI. Integrates with external machine learning APIs and allows users to save and share their generated images.',
+    image: '/project5.jpg',
+    category: 'ai',
+    tags: ['React', 'OpenAI API', 'Node.js'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project5',
   },
   {
     id: 6,
-    title: "Weather App",
-    description: "Real-time weather application with location services",
+    title: 'Weather App',
+    description: 'Real-time weather application with location services',
     detailedDescription:
-      "A weather application that provides real-time forecasts based on user location or search. Features include hourly and weekly forecasts, weather maps, and notifications for severe weather alerts.",
-    image: "/project6.jpg",
-    category: "app",
-    tags: ["React Native", "Weather API", "Geolocation"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com/yourusername/project6",
+      'A weather application that provides real-time forecasts based on user location or search. Features include hourly and weekly forecasts, weather maps, and notifications for severe weather alerts.',
+    image: '/project6.jpg',
+    category: 'app',
+    tags: ['React Native', 'Weather API', 'Geolocation'],
+    demoUrl: 'https://example.com',
+    codeUrl: 'https://github.com/yourusername/project6',
   },
 ];
 
 const Portfolio: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   // Filter categories
-  const categories = ["all", "web", "app", "data", "ai"];
+  const categories = ['all', 'web', 'app', 'data', 'ai'];
 
   useEffect(() => {
-    if (activeFilter === "all") {
+    if (activeFilter === 'all') {
       setFilteredProjects(projects);
     } else {
       setFilteredProjects(
@@ -134,12 +143,12 @@ const Portfolio: React.FC = () => {
   const openProjectDetails = (project: Project) => {
     setSelectedProject(project);
     setShowModal(true);
-    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
   };
 
   const closeProjectDetails = () => {
     setShowModal(false);
-    document.body.style.overflow = "auto"; // Restore scrolling
+    document.body.style.overflow = 'auto'; // Restore scrolling
   };
 
   return (
@@ -168,7 +177,7 @@ const Portfolio: React.FC = () => {
           <span
             key={index}
             className={`portfolio__filter-item ${
-              activeFilter === category ? "active-filter" : ""
+              activeFilter === category ? 'active-filter' : ''
             }`}
             onClick={() => handleFilterClick(category)}
           >
@@ -223,66 +232,11 @@ const Portfolio: React.FC = () => {
         ))}
       </div>
 
-      {/* Project details modal */}
-      <div className={`portfolio__modal ${showModal ? "active" : ""}`}>
-        {selectedProject && (
-          <div className="portfolio__modal-content">
-            <button
-              className="portfolio__modal-close"
-              onClick={closeProjectDetails}
-              aria-label="Close"
-            >
-              <X size={24} />
-            </button>
-
-            <h3 className="portfolio__modal-title">{selectedProject.title}</h3>
-
-            <div className="portfolio__modal-img">
-              <div className="portfolio__placeholder-image" />
-            </div>
-
-            <p className="portfolio__modal-description">
-              {selectedProject.detailedDescription ||
-                selectedProject.description}
-            </p>
-
-            <div className="portfolio__modal-tech">
-              <h4>Technologies</h4>
-              <div className="portfolio__modal-tech-list">
-                {selectedProject.tags.map((tag, index) => (
-                  <span key={index} className="portfolio__modal-tech-item">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="portfolio__modal-buttons">
-              {selectedProject.demoUrl && (
-                <Link
-                  href={selectedProject.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="portfolio__modal-button"
-                >
-                  View Demo <ExternalLink size={16} />
-                </Link>
-              )}
-
-              {selectedProject.codeUrl && (
-                <Link
-                  href={selectedProject.codeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="portfolio__modal-button portfolio__modal-button-source"
-                >
-                  View Code <Github size={16} />
-                </Link>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+      <PortfolioModal
+        selectedProject={selectedProject}
+        showModal={showModal}
+        closeProjectDetails={closeProjectDetails}
+      />
     </section>
   );
 };

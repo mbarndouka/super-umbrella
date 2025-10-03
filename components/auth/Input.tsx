@@ -1,5 +1,5 @@
-import React, { InputHTMLAttributes } from "react";
-import "./styles/Input.css";
+import React, { InputHTMLAttributes } from 'react';
+import './styles/Input.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -17,19 +17,19 @@ const Input: React.FC<InputProps> = ({
   fullWidth = true,
   roundedTop = false,
   roundedBottom = false,
-  className = "",
+  className = '',
   ...props
 }) => {
   const inputClasses = [
-    "custom-input",
-    fullWidth ? "full-width" : "",
-    roundedTop ? "rounded-top" : "",
-    roundedBottom ? "rounded-bottom" : "",
-    error ? "input-error" : "",
+    'custom-input',
+    fullWidth ? 'full-width' : '',
+    roundedTop ? 'rounded-top' : '',
+    roundedBottom ? 'rounded-bottom' : '',
+    error ? 'input-error' : '',
     className,
   ]
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
 
   return (
     <div className="input-container">

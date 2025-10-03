@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
-import "./about.css";
-import Image from "next/image";
-import { FileText, Award, Briefcase } from "lucide-react";
-import PillButton from "../../components/PillButton";
-import Face from "../../assets/images/face12.jpg";
+'use client';
+import React from 'react';
+import './about.css';
+import Image from 'next/image';
+import { FileText, Award, Briefcase } from 'lucide-react';
+import PillButton from '../../components/PillButton';
+import Face from '../../assets/images/face12.jpg';
 
 const About = () => {
   return (
@@ -16,11 +16,13 @@ const About = () => {
         <div className="about__img-container">
           <Image
             src={Face}
-            alt="About Image"
+            alt="Mbarndouka - About Me"
             width={350}
             height={350}
             className="about__img"
-            priority
+            loading="lazy"
+            placeholder="blur"
+            quality={85}
           />
         </div>
 
@@ -47,10 +49,10 @@ const About = () => {
 
           <p className="about__description typewriter">
             Frontend developer with extensive experience in web application
-            development. I create{" "}
-            <span className="highlight">successful responsive websites</span>{" "}
+            development. I create{' '}
+            <span className="highlight">successful responsive websites</span>{' '}
             that are fast, easy to use, and built with best practices. The main
-            areas of my expertise are{" "}
+            areas of my expertise are{' '}
             <span className="highlight-alt">HTML, CSS, JavaScript, React</span>,
             and building small and medium web applications.
           </p>

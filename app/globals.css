@@ -21,7 +21,7 @@
   --dark-container-color: hsl(var(--hue), var(--sat), 15%);
 
   /* font and typo */
-  --body-font: var(--font-satoshi, "Satoshi", sans-serif);
+  --body-font: var(--font-satoshi, 'Satoshi', sans-serif);
 
   /* .5rem = 8px | 1rem = 16px */
 
@@ -94,7 +94,9 @@ textarea {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 h1,

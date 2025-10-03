@@ -5,13 +5,15 @@
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--container-color);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
 /* Progress bar for scroll position */
 .header::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -44,7 +46,9 @@
   color: var(--title-color);
   font-weight: var(--font-medium);
   position: relative;
-  transition: transform 0.3s ease, color 0.3s;
+  transition:
+    transform 0.3s ease,
+    color 0.3s;
 }
 
 .nav__logo {
@@ -73,7 +77,9 @@
   font-size: var(--small-font-size);
   color: var(--title-color);
   font-weight: var(--font-medium);
-  transition: color 0.3s, transform 0.2s;
+  transition:
+    color 0.3s,
+    transform 0.2s;
   padding: 0.5rem 0;
 }
 
@@ -83,7 +89,7 @@
 
 /* Active link indicator with animation */
 .nav__item .active__link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -282,7 +288,9 @@
     height: 100%; /* Ensure the link takes full height of its container */
     padding: 0.5rem;
     border-radius: 0.5rem;
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
   }
 
   .nav__link:active {
@@ -308,7 +316,9 @@
     font-size: 1.3rem;
     cursor: pointer;
     color: var(--title-color);
-    transition: transform 0.3s, color 0.3s;
+    transition:
+      transform 0.3s,
+      color 0.3s;
     display: block;
     z-index: 1005; /* Ensure close button is clickable */
     padding: 0.5rem;

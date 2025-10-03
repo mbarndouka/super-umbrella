@@ -1,5 +1,5 @@
-import React from "react";
-import SkillItem from "./SkillItem";
+import React from 'react';
+import SkillItem from './SkillItem';
 
 interface SkillData {
   icon: React.ReactNode;

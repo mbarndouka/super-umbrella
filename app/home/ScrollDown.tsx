@@ -1,6 +1,6 @@
-import React from "react";
-import { MoveDown } from "lucide-react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { MoveDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ScrollDown = () => {
   return (
@@ -25,7 +25,7 @@ const ScrollDown = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut',
               }}
             />
           </div>
@@ -38,7 +38,7 @@ const ScrollDown = () => {
             transition={{
               duration: 1.5,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay: 0.2,
             }}
           >

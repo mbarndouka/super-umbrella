@@ -5,8 +5,8 @@
   justify-content: center;
   font-family: var(
     --font-satoshi,
-    "Satoshi",
-    var(--body-font, "Arial, sans-serif")
+    'Satoshi',
+    var(--body-font, 'Arial, sans-serif')
   );
   font-weight: 500;
   border: none;
