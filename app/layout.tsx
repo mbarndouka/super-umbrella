@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import '../styles/theme.css';
 import './globals.css';
 import ClientThemeProvider from '../context/ClientThemeProvider';
 import ThemeToggle from '../components/header/ThemeToggle';

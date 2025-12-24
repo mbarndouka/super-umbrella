@@ -1,5 +1,4 @@
-/* Import theme variables */
-@import '../../../app/(auth)/theme-variables.css';
+/* Input styling - uses global theme variables from styles/theme.css */
 
 .input-container {
   position: relative;

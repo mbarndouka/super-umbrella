@@ -1,5 +1,4 @@
-/* Import theme variables */
-@import '../../../app/(auth)/theme-variables.css';
+/* Auth Card styling - uses global theme variables from styles/theme.css */
 
 .auth-card {
   width: 100%;

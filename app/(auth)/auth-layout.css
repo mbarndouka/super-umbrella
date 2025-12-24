@@ -1,4 +1,4 @@
-@import url('./theme-variables.css');
+/* Auth layout - uses global theme variables from styles/theme.css */
 
 .auth-layout {
   min-height: 100vh;

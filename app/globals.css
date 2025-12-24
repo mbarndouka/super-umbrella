@@ -1,77 +1,9 @@
-/* Remove Poppins import since we're using Satoshi from local fonts */
-/* Using Satoshi font set up in layout.tsx */
+/* Global Styles - Base styles and utilities
+ * Theme variables are now in styles/theme.css
+ * This file imports theme and adds base styles
+ */
 
-:root {
-  --header-height: 3rem;
-
-  /* color */
-  --hue: 0;
-  --sat: 0%;
-  --title-color: hsl(var(--hue), var(--sat), 20%);
-  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
-  --text-color: hsl(var(--hue), var(--sat), 46%);
-  --body-color: hsl(var(--hue), var(--sat), 98%);
-  --container-color: #fff;
-
-  /* Dark Theme Colors */
-  --dark-title-color: hsl(var(--hue), var(--sat), 92%);
-  --dark-title-color-dark: hsl(var(--hue), var(--sat), 100%);
-  --dark-text-color: hsl(var(--hue), var(--sat), 75%);
-  --dark-body-color: hsl(var(--hue), var(--sat), 10%);
-  --dark-container-color: hsl(var(--hue), var(--sat), 15%);
-
-  /* font and typo */
-  --body-font: var(--font-satoshi, 'Satoshi', sans-serif);
-
-  /* .5rem = 8px | 1rem = 16px */
-
-  --big-font-size: 3.5rem;
-  --h1-font-size: 2.25rem;
-  --h2-font-size: 1.5rem;
-  --h3-font-size: 1.25rem;
-  --normal-font-size: 1rem;
-  --small-font-size: 0.875rem;
-  --smaller-font-size: 0.813rem;
-  --tiny-font-size: 0.625rem;
-
-  /* font weight */
-
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semi-bold: 600;
-
-  /* margin bottom */
-
-  --mb-0-25: 0.25rem;
-  --mb-0-5: 0.5rem;
-  --mb-0-75: 0.75rem;
-  --mb-1: 1rem;
-  --mb-1-5: 1.5rem;
-  --mb-2: 2rem;
-  --mb-2-5: 2.5rem;
-  --mb-3: 3rem;
-
-  /* z index */
-
-  --z-tooltip: 10;
-  --z-fixed: 100;
-  --z-modal: 1000;
-}
-
-/* reponsive typography */
-@media screen and (max-width: 992px) {
-  :root {
-    --big-font-size: 2.75rem;
-    --h1-font-size: 1.5rem;
-    --h2-font-size: 1.25rem;
-    --h3-font-size: 1rem;
-    --normal-font-size: 0.938rem;
-    --small-font-size: 0.813rem;
-    --smaller-font-size: 0.75rem;
-  }
-}
-
-/* base */
+/* Base styles */
 
 * {
   margin: 0;
@@ -95,8 +27,8 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   transition:
-    background-color 0.3s,
-    color 0.3s;
+    background-color var(--transition-base),
+    color var(--transition-base);
 }
 
 h1,
@@ -125,41 +57,7 @@ img {
   height: auto;
 }
 
-/* Dark theme styles */
-.dark-theme {
-  --title-color: var(--dark-title-color);
-  --title-color-dark: var(--dark-title-color-dark);
-  --text-color: var(--dark-text-color);
-  --body-color: var(--dark-body-color);
-  --container-color: var(--dark-container-color);
-}
-
-/* Theme button styles */
-.theme__toggle {
-  position: fixed;
-  right: 2rem;
-  bottom: 5rem;
-  background-color: var(--title-color);
-  color: var(--container-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.25rem;
-  z-index: var(--z-tooltip);
-  cursor: pointer;
-  transition: 0.4s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.theme__toggle:hover {
-  background-color: var(--title-color-dark);
-  transform: translateY(-3px);
-}
-
-/* reusable css classes */
+/* Reusable CSS classes */
 
 .section {
   padding: 6rem 0 2rem;
@@ -197,12 +95,15 @@ img {
   background-color: var(--title-color);
   color: var(--container-color);
   padding: 1.25rem 2rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   font-weight: var(--font-medium);
+  transition: all var(--transition-base);
 }
 
 .button:hover {
   background-color: var(--title-color-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .button__icon {
@@ -210,9 +111,12 @@ img {
 }
 
 .button--flex {
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
+  gap: var(--mb-0-5);
 }
+
+/* Responsive */
 
 @media screen and (max-width: 992px) {
   .container {
@@ -234,6 +138,7 @@ img {
   body {
     margin: 0 0 var(--header-height) 0;
   }
+
   .section {
     padding: 2rem 0 4rem;
   }
@@ -243,13 +148,7 @@ img {
   }
 }
 
-@media screen and (max-width: 576px) {
-}
-
 @media screen and (max-width: 350px) {
-  :root {
-    --big-font-size: 2.25rem;
-  }
   .container {
     margin-left: var(--mb-1);
     margin-right: var(--mb-1);

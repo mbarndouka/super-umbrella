@@ -1,5 +1,4 @@
-/* Import theme variables */
-@import '../../../app/(auth)/theme-variables.css';
+/* Checkbox styling - uses global theme variables from styles/theme.css */
 
 .checkbox-container {
   margin-bottom: 1rem;

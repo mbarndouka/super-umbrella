@@ -1,5 +1,4 @@
-/* Import theme variables */
-@import '../../../app/(auth)/theme-variables.css';
+/* Auth Forms styling - uses global theme variables from styles/theme.css */
 
 .auth-form {
   margin-top: 1.5rem;

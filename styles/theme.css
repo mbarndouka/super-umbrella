@@ -1,0 +1,196 @@
+/**
+ * Centralized Theme System
+ * All CSS variables and design tokens in one place
+ * This file should be imported once in the root layout
+ */
+
+:root {
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  --header-height: 3rem;
+
+  /* ============================================
+     COLOR SYSTEM - HSL Base
+     ============================================ */
+  --hue: 0;
+  --sat: 0%;
+
+  /* Light Theme Colors */
+  --title-color: hsl(var(--hue), var(--sat), 20%);
+  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
+  --text-color: hsl(var(--hue), var(--sat), 46%);
+  --body-color: hsl(var(--hue), var(--sat), 98%);
+  --container-color: #fff;
+
+  /* Dark Theme Color Values (overridden by .dark-theme class) */
+  --dark-title-color: hsl(var(--hue), var(--sat), 92%);
+  --dark-title-color-dark: hsl(var(--hue), var(--sat), 100%);
+  --dark-text-color: hsl(var(--hue), var(--sat), 75%);
+  --dark-body-color: hsl(var(--hue), var(--sat), 10%);
+  --dark-container-color: hsl(var(--hue), var(--sat), 15%);
+
+  /* ============================================
+     ACCENT COLORS
+     ============================================ */
+  --first-color: #f0f0f0;
+  --first-color-alt: #e0e0e0;
+  --first-color-rgb: 240, 240, 240;
+
+  /* Semantic Colors */
+  --error-color: #ff0000;
+  --success-color: #00ff00;
+  --warning-color: #ffaa00;
+  --info-color: #0099ff;
+
+  /* State Colors */
+  --border-color: #000;
+  --input-border: #000;
+  --link-color: #000;
+  --muted-text: #666;
+  --accent-color: #000;
+
+  /* Background Variants */
+  --bg-color: #f9f9f9;
+  --card-bg: #fff;
+  --input-bg: transparent;
+
+  /* Shape & Decoration */
+  --shape-opacity: 1;
+  --decoration-opacity: 0.1;
+
+  /* Dashboard Specific */
+  --dashboard-primary: #000000;
+  --dashboard-secondary: #333333;
+  --dashboard-background: #ffffff;
+  --dashboard-text: #000000;
+  --dashboard-text-light: #666666;
+  --dashboard-border: #e0e0e0;
+  --dashboard-active: #000000;
+  --dashboard-hover: #f5f5f5;
+  --dashboard-shadow: rgba(0, 0, 0, 0.1);
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --body-font: var(--font-satoshi, 'Satoshi', sans-serif);
+
+  /* Font Sizes (.5rem = 8px | 1rem = 16px) */
+  --big-font-size: 3.5rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+  --tiny-font-size: 0.625rem;
+
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* ============================================
+     SPACING SYSTEM
+     ============================================ */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* ============================================
+     Z-INDEX LAYERS
+     ============================================ */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /* ============================================
+     TRANSITIONS & ANIMATIONS
+     ============================================ */
+  --transition-fast: 0.2s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.4s;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+.dark-theme {
+  --title-color: var(--dark-title-color);
+  --title-color-dark: var(--dark-title-color-dark);
+  --text-color: var(--dark-text-color);
+  --body-color: var(--dark-body-color);
+  --container-color: var(--dark-container-color);
+
+  /* Dark theme specific overrides */
+  --bg-color: #111;
+  --text-color: #fff;
+  --border-color: #fff;
+  --input-border: #fff;
+  --card-bg: #111;
+  --accent-color: #fff;
+  --error-color: #ff6b6b;
+  --link-color: #fff;
+  --muted-text: #aaa;
+  --shape-opacity: 0.1;
+  --decoration-opacity: 0.2;
+
+  /* Dashboard dark theme */
+  --dashboard-primary: #ffffff;
+  --dashboard-secondary: #cccccc;
+  --dashboard-background: #000000;
+  --dashboard-text: #ffffff;
+  --dashboard-text-light: #999999;
+  --dashboard-border: #333333;
+  --dashboard-active: #ffffff;
+  --dashboard-hover: #1a1a1a;
+  --dashboard-shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+@media screen and (max-width: 992px) {
+  :root {
+    --big-font-size: 2.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  :root {
+    --big-font-size: 2.25rem;
+  }
+}

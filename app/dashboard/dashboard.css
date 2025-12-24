@@ -1,15 +1,4 @@
-/* Dashboard Black and White Theme */
-:root {
-  --dashboard-primary: #000000;
-  --dashboard-secondary: #333333;
-  --dashboard-background: #ffffff;
-  --dashboard-text: #000000;
-  --dashboard-text-light: #666666;
-  --dashboard-border: #e0e0e0;
-  --dashboard-active: #000000;
-  --dashboard-hover: #f5f5f5;
-  --dashboard-shadow: rgba(0, 0, 0, 0.1);
-}
+/* Dashboard Styles - using theme variables from styles/theme.css */
 
 /* Main Layout */
 .dashboard-container {
