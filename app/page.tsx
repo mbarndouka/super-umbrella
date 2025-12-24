@@ -3,7 +3,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/header';
-import HomeSection from './home/page'; // Keep home static as it's first
+import HomeSection from './home/Page'; // Keep home static as it's first
 import About from './about/page'; // Keep about static
 import Skills from './skills/page'; // Keep skills static
 
