@@ -1,10 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-// import Image from "next/image";
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import { getAllProjects, getProjectCategories } from '@/lib/data';
+import { Project } from '@/types';
 
 import './portfolio.css';
 
@@ -16,115 +17,21 @@ const PortfolioModal = dynamic(
   }
 );
 
-// Define animation props interface
-// interface AnimationProps {
-//   opacity: number;
-//   y: number;
-// }
-
 interface TransitionProps {
   duration: number;
   delay?: number;
 }
 
-// Project interface
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  detailedDescription?: string;
-  image: string;
-  category: string;
-  tags: string[];
-  demoUrl?: string;
-  codeUrl?: string;
-}
-
-// Sample project data
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'E-commerce Platform',
-    description:
-      'Full-stack e-commerce application with React, Node.js, and MongoDB',
-    detailedDescription:
-      'A comprehensive e-commerce solution that includes product management, shopping cart, user authentication, payment processing, and order tracking. Built with a React frontend, Node.js backend, and MongoDB database.',
-    image: '/project1.jpg',
-    category: 'web',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project1',
-  },
-  {
-    id: 2,
-    title: 'Portfolio Website',
-    description: 'Personal portfolio website built with Next.js and TypeScript',
-    detailedDescription:
-      'A modern, responsive portfolio website to showcase projects and skills. Built with Next.js and TypeScript, featuring dark mode, animations, and contact form with server-side validation.',
-    image: '/project2.jpg',
-    category: 'web',
-    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project2',
-  },
-  {
-    id: 3,
-    title: 'Task Management App',
-    description: 'Task management application with drag-and-drop functionality',
-    detailedDescription:
-      'A productivity app that helps users organize tasks with drag-and-drop functionality. Features include task categories, due dates, priority levels, and progress tracking.',
-    image: '/project3.jpg',
-    category: 'app',
-    tags: ['React', 'Redux', 'Firebase'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project3',
-  },
-  {
-    id: 4,
-    title: 'Finance Dashboard',
-    description: 'Financial analytics dashboard with data visualization',
-    detailedDescription:
-      'An interactive dashboard that visualizes financial data with charts, graphs, and tables. Allows users to track expenses, income, and investments with customizable date ranges.',
-    image: '/project4.jpg',
-    category: 'data',
-    tags: ['React', 'D3.js', 'Firebase'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project4',
-  },
-  {
-    id: 5,
-    title: 'AI Image Generator',
-    description: 'Image generation tool using machine learning APIs',
-    detailedDescription:
-      'A web application that generates images based on text prompts using AI. Integrates with external machine learning APIs and allows users to save and share their generated images.',
-    image: '/project5.jpg',
-    category: 'ai',
-    tags: ['React', 'OpenAI API', 'Node.js'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project5',
-  },
-  {
-    id: 6,
-    title: 'Weather App',
-    description: 'Real-time weather application with location services',
-    detailedDescription:
-      'A weather application that provides real-time forecasts based on user location or search. Features include hourly and weekly forecasts, weather maps, and notifications for severe weather alerts.',
-    image: '/project6.jpg',
-    category: 'app',
-    tags: ['React Native', 'Weather API', 'Geolocation'],
-    demoUrl: 'https://example.com',
-    codeUrl: 'https://github.com/yourusername/project6',
-  },
-];
-
 const Portfolio: React.FC = () => {
+  const projects = getAllProjects();
+  const projectCategories = getProjectCategories();
   const [activeFilter, setActiveFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Filter categories
-  const categories = ['all', 'web', 'app', 'data', 'ai'];
+  // Filter categories - 'all' plus actual project categories
+  const categories = ['all', ...projectCategories];
 
   useEffect(() => {
     if (activeFilter === 'all') {

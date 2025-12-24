@@ -4,53 +4,11 @@ import './skills.css';
 import SkillCard from '../../components/SkillCard';
 import { motion } from 'framer-motion';
 import { useAnimation } from '../../lib/hooks/useAnimation';
+import { getAllSkillCategories } from '@/lib/data';
 
 const Skills = () => {
   const { staggerContainer, staggerItem } = useAnimation();
-  // Define frontend developer skills with creative levels
-  const frontendSkills = [
-    { name: 'HTML', level: 'Rock Solid' },
-    { name: 'NextJs', level: 'Power User' },
-    { name: 'CSS', level: 'Style Master' },
-    { name: 'Git', level: 'Branch Wizard' },
-    { name: 'Javascript', level: 'Logic Ninja' },
-    { name: 'React', level: 'Component Architect' },
-    { name: 'TypeScript', level: 'Type Guardian' },
-  ];
-
-  // Define backend skills with creative levels
-  const backendSkills = [
-    { name: 'Node.js', level: 'Runtime Ranger' },
-    { name: 'Express', level: 'API Artisan' },
-    { name: 'RESTful APIs', level: 'Endpoint Engineer' },
-    { name: 'GraphQL', level: 'Query Craftsman' },
-    { name: 'Authentication', level: 'Security Sentinel' },
-  ];
-
-  // Database skills with creative levels
-  const databaseSkills = [
-    { name: 'MongoDB', level: 'NoSQL Navigator' },
-    { name: 'PostgreSQL', level: 'Query Commander' },
-    { name: 'MySQL', level: 'Data Architect' },
-    { name: 'Redis', level: 'Cache Conjurer' },
-  ];
-
-  // Data Science skills with actual data science technologies
-  const dataScienceSkills = [
-    { name: 'Python', level: 'Data Wrangler' },
-    { name: 'Pandas', level: 'Frame Tamer' },
-    { name: 'NumPy', level: 'Array Artist' },
-    { name: 'Matplotlib', level: 'Viz Virtuoso' },
-    { name: 'Jupyter', level: 'Notebook Navigator' },
-  ];
-
-  // Tools and environments
-  const toolsSkills = [
-    { name: 'VS Code', level: 'Power User' },
-    { name: 'Docker', level: 'Container Captain' },
-    { name: 'CI/CD', level: 'Pipeline Pioneer' },
-    { name: 'AWS', level: 'Cloud Surfer' },
-  ];
+  const skillCategories = getAllSkillCategories();
 
   return (
     <section className="skills section" id="skills">
@@ -78,25 +36,11 @@ const Skills = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={staggerItem}>
-          <SkillCard title="Frontend Wizardry" skills={frontendSkills} />
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          <SkillCard title="Backend Sorcery" skills={backendSkills} />
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          <SkillCard title="Database Command" skills={databaseSkills} />
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          <SkillCard title="Data Science Alchemy" skills={dataScienceSkills} />
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          <SkillCard title="Tools & Environments" skills={toolsSkills} />
-        </motion.div>
+        {skillCategories.map((category) => (
+          <motion.div key={category.id} variants={staggerItem}>
+            <SkillCard title={category.title} skills={category.skills} />
+          </motion.div>
+        ))}
       </motion.div>
     </section>
   );

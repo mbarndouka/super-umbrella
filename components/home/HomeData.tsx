@@ -3,8 +3,11 @@ import { Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import PillButton from '../PillButton';
+import { getPersonalInfo } from '@/lib/data';
 
 const HomeData = () => {
+  const personalInfo = getPersonalInfo();
+  
   return (
     <div className="home__data">
       <motion.h1
@@ -13,13 +16,18 @@ const HomeData = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
       >
-        Mbarndouka.O Marius
+        {personalInfo.name}
       </motion.h1>
 
       <div className="home__subtitle-wrapper">
         <h3 className="home__subtitle">
           <TypeAnimation
-            sequence={['Frontend developer', 1000, 'Data scientist', 1000]}
+            sequence={[
+              personalInfo.title,
+              1000,
+              personalInfo.alternateTitle,
+              1000,
+            ]}
             wrapper="span"
             speed={50}
             repeat={Infinity}
@@ -34,8 +42,7 @@ const HomeData = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
       >
-        I am a Front end developer based in Kigali and data science student at
-        ALX. I am very passionate about data and dedicated to my work.
+        {personalInfo.bio}
       </motion.p>
 
       <motion.div

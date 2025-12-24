@@ -2,18 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { X, Github, ExternalLink } from 'lucide-react';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  detailedDescription?: string;
-  image: string;
-  category: string;
-  tags: string[];
-  demoUrl?: string;
-  codeUrl?: string;
-}
+import { Project } from '@/types';
 
 interface PortfolioModalProps {
   selectedProject: Project | null;

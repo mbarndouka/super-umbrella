@@ -1,8 +1,11 @@
 import React from 'react';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { getSocialLinks } from '@/lib/data';
 
 const Social = () => {
+  const socialLinks = getSocialLinks();
+  
   const socialVariants = {
     hidden: { opacity: 0, x: -25 },
     visible: (i: number) => ({
@@ -15,53 +18,52 @@ const Social = () => {
     }),
   };
 
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Linkedin':
+        return <Linkedin size={20} />;
+      case 'Github':
+        return <Github size={20} />;
+      case 'Twitter':
+        return <Twitter size={20} />;
+      default:
+        return null;
+    }
+  };
+
+  const getHoverColor = (name: string) => {
+    switch (name) {
+      case 'LinkedIn':
+        return '#0A66C2';
+      case 'GitHub':
+        return '#333';
+      case 'Twitter':
+        return '#1DA1F2';
+      default:
+        return undefined;
+    }
+  };
+
   return (
     <div className="home__social">
-      <motion.a
-        href="https://www.linkedin.com/in/mbarndouka"
-        className="home__social-icon"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn Profile"
-        custom={0}
-        initial="hidden"
-        animate="visible"
-        variants={socialVariants}
-        whileHover={{ y: -5, color: '#0A66C2' }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <Linkedin size={20} />
-      </motion.a>
-      <motion.a
-        href="https://github.com/mbarndouka"
-        className="home__social-icon"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub Profile"
-        custom={1}
-        initial="hidden"
-        animate="visible"
-        variants={socialVariants}
-        whileHover={{ y: -5, color: '#333' }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <Github size={20} />
-      </motion.a>
-      <motion.a
-        href="https://twitter.com/mbarndouka"
-        className="home__social-icon"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Twitter Profile"
-        custom={2}
-        initial="hidden"
-        animate="visible"
-        variants={socialVariants}
-        whileHover={{ y: -5, color: '#1DA1F2' }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <Twitter size={20} />
-      </motion.a>
+      {socialLinks.map((link, index) => (
+        <motion.a
+          key={link.name}
+          href={link.url}
+          className="home__social-icon"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.ariaLabel}
+          custom={index}
+          initial="hidden"
+          animate="visible"
+          variants={socialVariants}
+          whileHover={{ y: -5, color: getHoverColor(link.name) }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {getIcon(link.icon)}
+        </motion.a>
+      ))}
     </div>
   );
 };
