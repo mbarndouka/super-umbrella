@@ -5,7 +5,7 @@ import HomeData from './HomeData';
 import ScrollDown from './ScrollDown';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Profile from '../../assets/images/face12.jpg';
+import Profile from '../../../assets/images/face12.jpg';
 import './home.css';
 
 const HomeSection = () => {

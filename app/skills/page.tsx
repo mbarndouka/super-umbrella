@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import './skills.css';
-import SkillCard from '../../components/SkillCard';
+import SkillCard from '../../components/features/SkillCard';
 import { motion } from 'framer-motion';
 import { useAnimation } from '../../lib/hooks/useAnimation';
 import { getAllSkillCategories } from '@/lib/data';

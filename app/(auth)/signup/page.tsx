@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { AuthCard, SignUpForm } from '@/components/auth';
+import { AuthCard, SignUpForm } from '@/components/features/auth';
 
 export default function SignUpPage() {
   return (

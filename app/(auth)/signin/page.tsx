@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { AuthCard, SignInForm } from '@/components/auth';
+import { AuthCard, SignInForm } from '@/components/features/auth';
 
 export default function SignInPage() {
   return (

@@ -1,13 +1,13 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import Footer from '../components/footer/Footer';
-import Header from '../components/header/header';
-import { HomeSection } from '../components/home';
+import { Footer } from '../components/layouts/footer';
+import { Header } from '../components/layouts/header';
+import { HomeSection } from '../components/features/home';
 import About from './about/page';
 import Skills from './skills/page';
 
 // Lazy load heavier sections with better loading states
-const Qualification = dynamic(() => import('./qualification/qualification'), {
+const Qualification = dynamic(() => import('./qualification/page'), {
   loading: () => <div className="section-loading">Loading...</div>,
 });
 const Portfolio = dynamic(() => import('./portfolio/page'), {

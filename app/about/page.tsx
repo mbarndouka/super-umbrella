@@ -3,7 +3,7 @@ import React from 'react';
 import './about.css';
 import Image from 'next/image';
 import { FileText, Award, Briefcase } from 'lucide-react';
-import PillButton from '../../components/PillButton';
+import PillButton from '../../components/shared/PillButton';
 import Face from '../../assets/images/face12.jpg';
 
 const About = () => {

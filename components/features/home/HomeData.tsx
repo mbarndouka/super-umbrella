@@ -2,7 +2,7 @@ import React from 'react';
 import { Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import PillButton from '../PillButton';
+import PillButton from '../../shared/PillButton';
 import { getPersonalInfo } from '@/lib/data';
 
 const HomeData = () => {

@@ -3,8 +3,8 @@ import localFont from 'next/font/local';
 import '../styles/theme.css';
 import './globals.css';
 import ClientThemeProvider from '../context/ClientThemeProvider';
-import ThemeToggle from '../components/header/ThemeToggle';
-import ErrorBoundary from '../components/ErrorBoundary';
+import ThemeToggle from '../components/layouts/header/ThemeToggle';
+import ErrorBoundary from '../components/shared/ErrorBoundary';
 import ReactQueryProvider from '../context/ReactQueryProvider';
 
 const satoshi = localFont({

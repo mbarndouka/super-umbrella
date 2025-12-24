@@ -11,7 +11,7 @@ import './portfolio.css';
 
 // Lazy load the modal component
 const PortfolioModal = dynamic(
-  () => import('../../components/PortfolioModal'),
+  () => import('../../components/features/PortfolioModal'),
   {
     loading: () => <div>Loading...</div>,
   }
