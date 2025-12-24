@@ -116,9 +116,7 @@ export type ThemeSpacing = typeof theme.spacing;
 // Helper function to get CSS variable value
 export const getCSSVar = (varName: string): string => {
   if (typeof window !== 'undefined') {
-    return getComputedStyle(document.documentElement).getPropertyValue(
-      varName
-    );
+    return getComputedStyle(document.documentElement).getPropertyValue(varName);
   }
   return '';
 };
