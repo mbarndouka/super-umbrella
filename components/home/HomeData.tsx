@@ -2,9 +2,9 @@ import React from 'react';
 import { Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import PillButton from '../../components/PillButton';
+import PillButton from '../PillButton';
 
-const Data = () => {
+const HomeData = () => {
   return (
     <div className="home__data">
       <motion.h1
@@ -53,4 +53,4 @@ const Data = () => {
   );
 };
 
-export default Data;
+export default HomeData;

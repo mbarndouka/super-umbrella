@@ -7,3 +7,4 @@ export { default as SkillItem } from './SkillItem';
 export * from './header';
 export * from './auth';
 export * from './footer';
+export * from './home';

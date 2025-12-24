@@ -31,7 +31,7 @@ const Social = () => {
         whileTap={{ scale: 0.9 }}
       >
         <Linkedin size={20} />
-      </motion.a>{' '}
+      </motion.a>
       <motion.a
         href="https://github.com/mbarndouka"
         className="home__social-icon"

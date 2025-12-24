@@ -1,14 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Social from './social';
-import Data from './Data';
+import Social from './Social';
+import HomeData from './HomeData';
 import ScrollDown from './ScrollDown';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Profile from '../../assets/images/face12.jpg';
-import './Home.css';
+import './home.css';
 
-const Home = () => {
+const HomeSection = () => {
   const [showScrollDown, setShowScrollDown] = useState(true);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Home = () => {
     // Cleanup
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
   return (
     <section className="home section" id="home">
       <div className="home__container container grid">
@@ -73,8 +74,8 @@ const Home = () => {
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.6 }}
             className="home__data-container"
           >
-            <Data />
-          </motion.div>{' '}
+            <HomeData />
+          </motion.div>
         </div>
 
         {showScrollDown && (
@@ -98,10 +99,9 @@ const Home = () => {
           animate={{
             opacity: 0.15,
             y: [0, 10, 0],
-            x: [0, 10, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 3,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -111,14 +111,27 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 0.1,
-            y: [0, -15, 0],
-            x: [0, -5, 0],
+            x: [0, 10, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 4,
             repeat: Infinity,
             ease: 'easeInOut',
             delay: 1,
+          }}
+        />
+        <motion.div
+          className="shape shape-3"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 0.12,
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 2,
           }}
         />
       </div>
@@ -126,4 +139,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeSection;
