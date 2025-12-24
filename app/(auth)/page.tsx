@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-export default function AuthPage() {
+export default async function AuthPage() {
   // Redirect to the signin page
   redirect('/auth/signin');
 }
