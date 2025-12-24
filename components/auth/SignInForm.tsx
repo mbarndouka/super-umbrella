@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Input from './Input';
 import Button from './Button';
 import Checkbox from './Checkbox';
@@ -10,14 +9,12 @@ interface SignInFormProps {
   onSuccess?: () => void;
 }
 
-const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
-  const router = useRouter();
+const SignInForm: React.FC<SignInFormProps> = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false,
   });
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,51 +27,10 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError('');
 
-    try {
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          action: 'signin',
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Store token based on remember me preference
-        if (formData.rememberMe) {
-          localStorage.setItem('authToken', data.data.token);
-        } else {
-          sessionStorage.setItem('authToken', data.data.token);
-        }
-
-        // Store user info in localStorage
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-
-        // Call onSuccess callback if provided
-        if (onSuccess) {
-          onSuccess();
-        }
-
-        // Redirect to dashboard
-        router.push('/dashboard');
-      } else {
-        setError(data.message || 'Authentication failed');
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-      console.error('Auth error:', err);
-    } finally {
-      setLoading(false);
-    }
+    // TODO: Implement authentication
+    setError('Authentication not yet implemented');
   };
 
   return (
@@ -124,7 +80,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSuccess }) => {
       </div>
 
       <div className="form-submit">
-        <Button type="submit" fullWidth isLoading={loading}>
+        <Button type="submit" fullWidth>
           Sign in
         </Button>
       </div>

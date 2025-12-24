@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Input from './Input';
 import Button from './Button';
@@ -11,8 +10,7 @@ interface SignUpFormProps {
   onSuccess?: () => void;
 }
 
-const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
-  const router = useRouter();
+const SignUpForm: React.FC<SignUpFormProps> = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +18,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
     confirmPassword: '',
     agreeToTerms: false,
   });
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,61 +30,21 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError('');
 
     // Basic validation
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
-      setLoading(false);
       return;
     }
 
     if (!formData.agreeToTerms) {
       setError('You must agree to the terms and conditions');
-      setLoading(false);
       return;
     }
 
-    try {
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          action: 'signup',
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Store token in localStorage
-        localStorage.setItem('authToken', data.data.token);
-
-        // Store user info in localStorage
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-
-        // Call onSuccess callback if provided
-        if (onSuccess) {
-          onSuccess();
-        }
-
-        // Redirect to dashboard after successful registration
-        router.push('/dashboard');
-      } else {
-        setError(data.message || 'Registration failed');
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-      console.error('Registration error:', err);
-    } finally {
-      setLoading(false);
-    }
+    // TODO: Implement authentication
+    setError('Authentication not yet implemented');
   };
 
   return (
@@ -165,7 +122,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
       </div>
 
       <div className="form-submit">
-        <Button type="submit" fullWidth isLoading={loading}>
+        <Button type="submit" fullWidth>
           Create Account
         </Button>
       </div>

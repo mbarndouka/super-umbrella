@@ -1,9 +1,5 @@
 // Environment variable validation
-const requiredEnvVars = [
-  'NEXT_PUBLIC_SUPABASE_URL',
-  'NEXT_PUBLIC_SUPABASE_ANON_KEY',
-  'JWT_SECRET',
-] as const;
+const requiredEnvVars = ['JWT_SECRET'] as const;
 
 export function validateEnvironment(): { isValid: boolean; missing: string[] } {
   const missing: string[] = [];
@@ -13,12 +9,6 @@ export function validateEnvironment(): { isValid: boolean; missing: string[] } {
     if (!process.env[envVar]) {
       missing.push(envVar);
     }
-  }
-
-  // Validate Supabase URL format
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (supabaseUrl && !supabaseUrl.startsWith('https://')) {
-    missing.push('NEXT_PUBLIC_SUPABASE_URL (must start with https://)');
   }
 
   // Validate JWT secret strength
@@ -37,10 +27,6 @@ export function validateEnvironment(): { isValid: boolean; missing: string[] } {
 
 // Safe environment variable access with defaults
 export const env = {
-  supabase: {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  },
   jwt: {
     secret: process.env.JWT_SECRET!,
   },
