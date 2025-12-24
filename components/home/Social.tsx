@@ -5,7 +5,7 @@ import { getSocialLinks } from '@/lib/data';
 
 const Social = () => {
   const socialLinks = getSocialLinks();
-  
+
   const socialVariants = {
     hidden: { opacity: 0, x: -25 },
     visible: (i: number) => ({

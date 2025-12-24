@@ -7,7 +7,7 @@ import { getPersonalInfo } from '@/lib/data';
 
 const HomeData = () => {
   const personalInfo = getPersonalInfo();
-  
+
   return (
     <div className="home__data">
       <motion.h1
