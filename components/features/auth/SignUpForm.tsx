@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import Input from './Input';
 import Button from './Button';
@@ -11,6 +13,7 @@ interface SignUpFormProps {
 }
 
 const SignUpForm: React.FC<SignUpFormProps> = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,8 +46,17 @@ const SignUpForm: React.FC<SignUpFormProps> = () => {
       return;
     }
 
-    // TODO: Implement authentication
-    setError('Authentication not yet implemented');
+    const { error: authError } = await authClient.signUp.email({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
+    if (authError) {
+      setError(authError.message || 'Failed to create account');
+      return;
+    }
+    router.push('/dashboard');
+    router.refresh();
   };
 
   return (

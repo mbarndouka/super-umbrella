@@ -1,7 +1,7 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 import bcrypt from 'bcryptjs';
 import 'dotenv/config';
-import { PrismaClient } from '../lib/generated/prisma/client.ts';
+import { PrismaClient } from '../lib/generated/prisma/client';
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter });
@@ -536,6 +536,9 @@ async function main() {
 
   // Clear existing data to ensure idempotency
   console.log('🧹 Clearing existing data...');
+  await prisma.session.deleteMany();
+  await prisma.account.deleteMany();
+  await prisma.verification.deleteMany();
   await prisma.blogPost.deleteMany();
   await prisma.project.deleteMany();
   await prisma.tag.deleteMany();
@@ -545,15 +548,24 @@ async function main() {
   await prisma.user.deleteMany();
   console.log('✅ Existing data cleared');
 
-  // Create admin user
+  // Create admin user (Better Auth format)
   console.log('👤 Creating admin user...');
   const hashedPassword = await bcrypt.hash('admin123', 10);
   const admin = await prisma.user.create({
     data: {
       email: 'admin@portfolio.com',
-      password: hashedPassword,
       name: 'Admin User',
-      role: 'ADMIN',
+      role: 'admin',
+      emailVerified: true,
+    },
+  });
+  // Create the credential account for Better Auth
+  await prisma.account.create({
+    data: {
+      accountId: admin.id,
+      providerId: 'credential',
+      userId: admin.id,
+      password: hashedPassword,
     },
   });
   console.log(`✅ Created admin user: ${admin.email}`);

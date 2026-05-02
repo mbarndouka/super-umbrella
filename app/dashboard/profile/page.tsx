@@ -37,7 +37,9 @@ export default function ProfilePage() {
             <div className="profile-field">
               <div className="field-label">Role</div>
               <div className="field-value">
-                <span className="user-role">{user?.role}</span>
+                <span className="user-role">
+                  {(user as { role?: string } | null)?.role ?? 'user'}
+                </span>
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
+import { useAuth } from '@/lib/hooks/useAuth';
 import './dashboard.css';
 
 export default function DashboardLayout({
@@ -8,47 +8,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const [user, setUser] = useState<{
-    name: string;
-    email: string;
-    role: string;
-  } | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Check for authentication on client side
-    const token =
-      localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-    const userInfo = localStorage.getItem('user');
-
-    if (!token) {
-      router.push('/signin');
-      return;
-    }
-
-    if (userInfo) {
-      try {
-        setUser(JSON.parse(userInfo));
-      } catch (e) {
-        console.error('Failed to parse user info:', e);
-        localStorage.removeItem('user');
-        router.push('/signin');
-      }
-    }
-
-    setLoading(false);
-  }, [router]);
-
-  const handleLogout = () => {
-    // Remove authentication data
-    localStorage.removeItem('authToken');
-    sessionStorage.removeItem('authToken');
-    localStorage.removeItem('user');
-
-    // Redirect to signin page
-    router.push('/signin');
-  };
+  const { user, loading, logout } = useAuth();
 
   if (loading) {
     return (
@@ -84,7 +44,7 @@ export default function DashboardLayout({
           </ul>
         </nav>
         <div className="sidebar-footer">
-          <button className="logout-button" onClick={handleLogout}>
+          <button className="logout-button" onClick={logout}>
             Logout
           </button>
         </div>
@@ -95,7 +55,9 @@ export default function DashboardLayout({
             <h1>Welcome, {user?.name || 'User'}</h1>
             <div className="user-info">
               <span className="user-email">{user?.email}</span>
-              <span className="user-role">{user?.role}</span>
+              <span className="user-role">
+                {(user as { role?: string } | null)?.role || 'user'}
+              </span>
             </div>
           </div>
         </header>

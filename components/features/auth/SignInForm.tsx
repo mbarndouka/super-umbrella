@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { authClient } from '@/lib/auth-client';
 import Input from './Input';
 import Button from './Button';
 import Checkbox from './Checkbox';
@@ -10,6 +12,7 @@ interface SignInFormProps {
 }
 
 const SignInForm: React.FC<SignInFormProps> = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -29,8 +32,16 @@ const SignInForm: React.FC<SignInFormProps> = () => {
     e.preventDefault();
     setError('');
 
-    // TODO: Implement authentication
-    setError('Authentication not yet implemented');
+    const { error: authError } = await authClient.signIn.email({
+      email: formData.email,
+      password: formData.password,
+    });
+    if (authError) {
+      setError(authError.message || 'Invalid email or password');
+      return;
+    }
+    router.push('/dashboard');
+    router.refresh();
   };
 
   return (

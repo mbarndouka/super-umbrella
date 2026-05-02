@@ -6,19 +6,12 @@ import { DashboardStats } from '@/types/user';
 
 export default function Dashboard() {
   const router = useRouter();
-  const { loading, isAuthenticated, redirectToSignIn } = useAuth();
+  const { loading } = useAuth();
   const [stats] = useState<DashboardStats>({
     projectCount: 6,
     skillCount: 15,
     experienceCount: 3,
   });
-
-  // Redirect to sign in if not authenticated
-  React.useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      redirectToSignIn();
-    }
-  }, [loading, isAuthenticated, redirectToSignIn]);
 
   if (loading) {
     return (
