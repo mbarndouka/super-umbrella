@@ -1,5 +1,5 @@
 // Environment variable validation
-const requiredEnvVars = ['JWT_SECRET'] as const;
+const requiredEnvVars = ['JWT_SECRET', 'DATABASE_URL'] as const;
 
 export function validateEnvironment(): { isValid: boolean; missing: string[] } {
   const missing: string[] = [];

@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("USER") // "ADMIN" or "USER"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id                  Int      @id @default(autoincrement())
+  title               String
+  description         String
+  detailedDescription String?
+  image               String
+  category            String   // web, app, data, ml
+  demoUrl             String?
+  codeUrl             String?
+  featured            Boolean  @default(false)
+  tags                Tag[]    @relation("ProjectTags")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model SkillCategory {
+  id     String  @id
+  title  String
+  skills Skill[]
+}
+
+model Skill {
+  id         Int           @id @default(autoincrement())
+  name       String
+  level      String
+  categoryId String
+  category   SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model Qualification {
+  id       Int     @id @default(autoincrement())
+  type     String  // "education" or "experience"
+  title    String
+  subtitle String
+  date     String
+  isLeft   Boolean @default(true)
+}
+
+model BlogPost {
+  id        Int      @id @default(autoincrement())
+  title     String
+  excerpt   String
+  content   String   @db.Text
+  date      String
+  author    String
+  category  String
+  readTime  String
+  imageUrl  String
+  tags      Tag[]    @relation("BlogPostTags")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  projects Project[]  @relation("ProjectTags")
+  posts    BlogPost[] @relation("BlogPostTags")
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String?
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+}
